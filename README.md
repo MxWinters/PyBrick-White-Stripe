@@ -15,9 +15,7 @@ Simply download to your device, open <Version 1/main.py> with the PyBricks app o
 # Configuration
 
 1.Set which Controller Mode you want the hub to start with in the Set Startup Controller Mode section.
-
 2.Set the user definable settings in the "User Definable Variables" section.
-
 (detailed info on each setting is included in the comments next to each setting in the main.py file)
 
 # Bugs / Issues
