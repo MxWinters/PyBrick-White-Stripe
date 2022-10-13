@@ -117,8 +117,8 @@ while True:
     SetLEDs()
     
     if controllerMode == 1:
-        #mode 1 simply passes and does nothing
-        #add commands here if you wish
+        #mode 1 is stand-by mode, it simply passes and does nothing in this program
+        #you can add commands here if you wish something to happen while in stand-by mode
         pass
     
     
@@ -166,7 +166,7 @@ while True:
 
 
     ### Dance - Spin Left
-    #dance mode spins the bot left on the spot when the reed stop button is pressed
+    #dance mode spins the bot left on the spot when the red stop button is pressed
     #press red stop button again to stop the robot from dancing
     if Button.LEFT in pressed and controllerMode == 3:
         danceMode = True
@@ -176,13 +176,14 @@ while True:
             if Button.LEFT in pressed:
                 drive1.stop()
                 drive2.stop()
-                danceMode = False           
+                danceMode = False
+                wait(1000)
             drive1.dc(-100)
             drive2.dc(100)
             wait(250)
         
     ### Dance - Spin Right
-    #dance mode spins the bot right on the spot when the reed stop button is pressed
+    #dance mode spins the bot right on the spot when the red stop button is pressed
     #press red stop button again to stop the robot from dancing
     if Button.RIGHT in pressed and controllerMode == 3:
         danceMode = True
@@ -192,7 +193,8 @@ while True:
             if Button.RIGHT in pressed:
                 drive1.dc(0)
                 drive2.dc(0)
-                danceMode = False      
+                danceMode = False
+                wait(1000)
             drive1.dc(100)
             drive2.dc(-100)
             wait(250)
@@ -206,15 +208,15 @@ while True:
         if controllerMode == 1:
             controllerMode = 2
             SetLEDs()
-            print("Controller mode 2")         
+            print("Controller mode 2 - Run Mode")         
         elif controllerMode == 2:
             controllerMode = 3
             SetLEDs()
-            print("Controller mode 3")
+            print("Controller mode 3 - Dance Mode")
         elif controllerMode == 3:
             controllerMode = 1
             SetLEDs()
-            print("Controller mode 1")
+            print("Controller mode 1 - Stand-By Mode")
         wait(250)
 
     # Wait For 10 Millisecond Before Repeating Loop
