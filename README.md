@@ -1,8 +1,8 @@
 # PyBricks Software For White Stripe
 
-Pybricks software for using the PoweredUp Remote with the Technic hub. This has been written for use with my combat robot White Stripe but can be used on any model that has 2 or 4 wheel skid steering such as tanks, robots or the LEGO Technic 42140 Transformation Vehicle set.
+Pybricks software for using the PoweredUp Remote with the Technic hub. This has been written for use with my combat robot White Stripe but can be used on any model that has 2 or 4 wheel skid steering such as tanks, robots or perhaps the LEGO Technic 42140 Transformation Vehicle set.
 
-This program has 3 different control modes, Stand-by Mode, Run Mode and Dance Mode. Stand-by Mode disables the remote's button to prevent movement of the robot. Run mode which allow one to drive the robot as normal. Dance Mode spins the robot around on the spot, left button spins left, right button spins right, then press the same button to stop it spinning. 
+This program has 3 different control modes, Stand-by Mode, Run Mode and Dance Mode. Stand-by Mode disables the remote's button to prevent movement of the robot when handling or not in use. Run mode which allow one to drive the robot as normal. Dance Mode spins the robot around on the spot, left button spins left, right button spins right, then press the same button to stop it spinning. 
 
 Switching between modes is done with the centre green button on the remote.
 
