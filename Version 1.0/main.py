@@ -173,13 +173,13 @@ while True:
         wait(500)
         while (danceMode == True):
             pressed = remote.buttons.pressed()
+            drive1.dc(-100)
+            drive2.dc(100)
             if Button.LEFT in pressed:
                 drive1.stop()
                 drive2.stop()
                 danceMode = False
                 wait(1000)
-            drive1.dc(-100)
-            drive2.dc(100)
             wait(250)
         
     ### Dance - Spin Right
@@ -190,13 +190,13 @@ while True:
         wait(500)
         while (danceMode == True):
             pressed = remote.buttons.pressed()
+            drive1.dc(100)
+            drive2.dc(-100)
             if Button.RIGHT in pressed:
                 drive1.dc(0)
                 drive2.dc(0)
                 danceMode = False
                 wait(1000)
-            drive1.dc(100)
-            drive2.dc(-100)
             wait(250)
 
     
