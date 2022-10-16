@@ -76,6 +76,7 @@ drive_motor1_speed = 0
 drive_motor2_speed = 0
 
 # User Definable Variables
+switch_debounce_time = 150
 # set motor port and direction
 drive1 = Motor(Port.A, Direction.CLOCKWISE)
 drive2 = Motor(Port.B, Direction.COUNTERCLOCKWISE)
@@ -176,11 +177,13 @@ while True:
             drive1.dc(-100)
             drive2.dc(100)
             if Button.LEFT in pressed:
-                drive1.stop()
-                drive2.stop()
                 danceMode = False
-                wait(1000)
-            wait(250)
+                drive1.dc(0)
+                drive2.dc(0)
+                hub.light.on(Color.RED)
+                remote.light.on(Color.RED)
+                wait(1000)      
+            wait(switch_debounce_time)
         
     ### Dance - Spin Right
     #dance mode spins the bot right on the spot when the red stop button is pressed
@@ -193,11 +196,13 @@ while True:
             drive1.dc(100)
             drive2.dc(-100)
             if Button.RIGHT in pressed:
+                danceMode = False
                 drive1.dc(0)
                 drive2.dc(0)
-                danceMode = False
+                hub.light.on(Color.RED)
+                remote.light.on(Color.RED)
                 wait(1000)
-            wait(250)
+            wait(switch_debounce_time)
 
     
     ### Mode Selector - Centre Green button
@@ -217,7 +222,7 @@ while True:
             controllerMode = 1
             SetLEDs()
             print("Controller mode 1 - Stand-By Mode")
-        wait(250)
+        wait(switch_debounce_time)
 
     # Wait For 10 Millisecond Before Repeating Loop
     wait(10)
