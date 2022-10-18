@@ -69,7 +69,6 @@ danceMode = False
 #either up side down or right side up. This is used to invert the controls when flipped
 hubOrientation = hub.imu.up() # This line taken and modified from Tcm0's 42140 code
 
-
 # Motor Varibles
 #used by the code, no need to change these
 drive_motor1_speed = 0
@@ -77,11 +76,11 @@ drive_motor2_speed = 0
 
 # User Definable Variables
 switch_debounce_time = 150
-# set motor port and direction
+#set motor port and direction
 drive1 = Motor(Port.A, Direction.CLOCKWISE)
 drive2 = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 
-# Update Console & LED's
+# Update Console
 hub.light.on(Color.GREEN)
 remote.light.on(Color.GREEN)
 print("\nSetup Complete...")
@@ -117,14 +116,23 @@ while True:
     #set hub/remote LEDs
     SetLEDs()
     
+    ### Entering Controller Mode 1 - Stand By Mode
+    #called when entering controllerMode 1
     if controllerMode == 1:
-        #mode 1 is stand-by mode, it simply passes and does nothing in this program
-        #you can add commands here if you wish something to happen while in stand-by mode
+        #you can add commands here if you wish something to happen when entering controllerMode 1
+        #this currently passed and does nothing. Remove or comment out pass below if you add code here
         pass
-    
-    
+
+    ### Entering Controller Mode 2 - Run Mode
+    #called when entering controllerMode 2
+    if controllerMode == 2:
+        #you can add commands here if you wish something to happen when entering controllerMode 2
+        #this currently passed and does nothing. Remove or comment out pass below if you add code here
+        pass
+
     ### Drive Motors
-    # Left Remote Button
+    # Remote Left +/- Buttons
+    #pressing the left +/- buttons on the remote activates with left side motor
     #which motor and its rotation direction is dependent on the hub/robot orientation
     #first we select the speed and direction of the motor
     if controllerMode == 2:
@@ -143,7 +151,8 @@ while True:
             else:
                 drive_motor2_speed = 0
 
-    # Right Remote Button
+    # Remote right +/- Buttons
+    #pressing the right +/- buttons on the remote activates with right side motor
     #which motor and its rotation direction is dependent on the hub/robot orientation
     #first we select the speed and direction of the motor
     if controllerMode == 2:
@@ -165,6 +174,12 @@ while True:
     drive1.dc(drive_motor1_speed)
     drive2.dc(drive_motor2_speed)
 
+    ### Controller Mode 3 - Dance Mode
+    #called when entering controllerMode 3
+    if controllerMode == 3:
+        #you can add commands here if you wish something to happen when entering controllerMode 3
+        #this currently passed and does nothing. Remove or comment out pass below if you add code here
+        pass
 
     ### Dance - Spin Left
     #dance mode spins the bot left on the spot when the red stop button is pressed
@@ -203,8 +218,7 @@ while True:
                 remote.light.on(Color.RED)
                 wait(1000)
             wait(switch_debounce_time)
-
-    
+   
     ### Mode Selector - Centre Green button
     #mode 1 - standby mode
     #mode 2 - run/fight mode
