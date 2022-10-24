@@ -82,10 +82,10 @@ switch_debounce_time = 150
 drive1 = Motor(Port.A, Direction.CLOCKWISE)
 drive2 = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 #motor control limits
-motor_max_speed = 2400
-motor_mode_2_acceleration = 5000
-motor_mode_3_acceleration = 15000
-motor_torque = 260
+motor_max_speed = 2400 #2400 is the max speed of the C+ L and XL motors
+motor_mode_2_acceleration = 5000 #the lower the number the slower the acceleration rate
+motor_mode_3_acceleration = 15000 #the higher the number the faster the acceleration rate
+motor_torque = 260 #260 is max torque value for the C+ L and XL motors
 
 
 # Update Console
