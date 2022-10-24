@@ -52,7 +52,7 @@ remote = Remote()
 remote.name("RemoteNameHere")
 
 # Update Console & LED's
-print("White Stripe Combat Robot - Version 2.0")
+print("White Stripe Combat Robot - Version 1.0")
 print("\nRunning Setup...")
 hub.light.on(Color.RED)
 remote.light.on(Color.RED)
@@ -82,10 +82,10 @@ switch_debounce_time = 150
 drive1 = Motor(Port.A, Direction.CLOCKWISE)
 drive2 = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 #motor control limits
-motor_max_speed = 2400 #2400 is the max speed of the C+ L and XL motors
-motor_mode_2_acceleration = 5000 #the lower the number the slower the acceleration rate
-motor_mode_3_acceleration = 15000 #the higher the number the faster the acceleration rate
-motor_torque = 260 #260 is max torque value for the C+ L and XL motors
+motor_max_speed = 2400
+motor_mode_2_acceleration = 5000
+motor_mode_3_acceleration = 15000
+motor_torque = 260
 
 
 # Update Console
@@ -155,7 +155,7 @@ while True:
     
     ### Entering Controller Mode 1 - Stand By Mode
     #executed when entering controllerMode 1
-    #here to stop the holding current being sent to the motors
+    #here to stop the motors being powered while holding when entering into standby mode
     if controllerMode == 1:
         drive_motor1_speed = 0
         drive_motor2_speed = 0
@@ -210,7 +210,7 @@ while True:
             else:
                 drive_motor1_speed = 0
     
-    # Apply Selected Speed To Motors
+    ### Apply Selected Speed
     #split to allow mode 2 to stop motor
     if controllerMode == 2:
         if drive_motor1_speed != 0:
@@ -236,7 +236,10 @@ while True:
     ### Drive Motor 1 Emergency Stop
     #executed when drive1 motor is stalled, cuts power to motor but only after stall_counter 
     #reaches 50 to prevent it randomly activating
+    #un/comment the line below to enable emergency stop in control mode 2 only
     if drive1.control.stalled() == True and controllerMode == 2:
+    #un/comment the line below to enable emergency stop in control mode 3
+    #if drive1.control.stalled() == True and controllerMode == 2 and controllerMode == 3:
         if stalled_counter == 50:
             stalled_counter = 0
             drive_motor1_speed = 0
@@ -250,7 +253,10 @@ while True:
     ### Drive Motor 2 Emergency Stop
     #executed when drive2 motor is stalled, cuts power to motor but only after stall_counter 
     #reaches 50 to prevent it randomly activating
-    if drive2.control.stalled() == True and controllerMode == 2:
+    #un/comment the line below to enable emergency stop in control mode 2 only
+    if drive1.control.stalled() == True and controllerMode == 2:
+    #un/comment the line below to enable emergency stop in control mode 3
+    #if drive1.control.stalled() == True and controllerMode == 2 and controllerMode == 3:
         if stalled_counter == 50:
             stalled_counter = 0
             drive_motor1_speed = 0
@@ -308,9 +314,8 @@ while True:
    
     ### Mode Selector - Centre Green button
     #mode 1 - standby mode
-    #mode 2 - run/fight mode (slow motor acceleration)
-    #mode 3 - run/fight mode (fast motor acceleration)
-    #mode 4 - dance mode
+    #mode 2 - run/fight mode
+    #mode 3 - dance mode
     if Button.CENTER in pressed:
         if controllerMode == 1:
             controllerMode = 2
