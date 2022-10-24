@@ -49,10 +49,10 @@ hub = TechnicHub()
 remote = Remote()
 #change the text inside the "" to set name on remote
 #15 character limit 
-remote.name("RemoteNameHere")
+remote.name("Mx-WhiteStipe")
 
 # Update Console & LED's
-print("White Stripe Combat Robot - Version 1.0")
+print("White Stripe Combat Robot - Version 2.0")
 print("\nRunning Setup...")
 hub.light.on(Color.RED)
 remote.light.on(Color.RED)
@@ -71,6 +71,8 @@ hubOrientation = hub.imu.up() # This line taken and modified from Tcm0's 42140 c
 
 # Motor Varibles
 #used by the code, no need to change these
+old_drive_motor1_speed = 0
+old_drive_motor2_speed = 0
 drive_motor1_speed = 0
 drive_motor2_speed = 0
 stalled_counter = 0
@@ -82,7 +84,7 @@ switch_debounce_time = 150
 drive1 = Motor(Port.A, Direction.CLOCKWISE)
 drive2 = Motor(Port.B, Direction.COUNTERCLOCKWISE)
 #motor control limits
-motor_max_speed = 2400
+motor_max_speed = 1500
 motor_mode_2_acceleration = 5000
 motor_mode_3_acceleration = 15000
 motor_torque = 260
@@ -91,11 +93,11 @@ motor_torque = 260
 # Update Console
 hub.light.on(Color.GREEN)
 remote.light.on(Color.GREEN)
-print("\nSetup Complete...")
+print("Setup Complete...")
 print("Battery voltage: " + str(hub.battery.voltage()) + "mV...")
 print("Battery current: " + str(hub.battery.current()) + "mA...")
 wait(1000)
-print("\nSystem Ready")
+print("System Ready\n")
 
 
 ### System Functions ###
@@ -120,9 +122,13 @@ def SetLEDs():
         hub.light.on(Color.BLUE)
         remote.light.on(Color.BLUE)
 
-# Emergency Stop Flash
-#flashes hub and remote led red/blue 5 times
-def EmStopFlash():
+# Emergency Stop 
+#stop the motors and flashes hub and remote leds red/blue 5 times
+def EmergencyStop():
+    drive_motor1_speed = 0
+    drive_motor2_speed = 0
+    drive1.stop()
+    drive2.stop()
     for x in range (0, 5):
         hub.light.on(Color.RED)
         remote.light.on(Color.BLUE)
@@ -179,7 +185,7 @@ while True:
             if Button.LEFT_PLUS in pressed:
                 drive_motor1_speed = motor_max_speed
             elif Button.LEFT_MINUS in pressed:
-                drive_motor1_speed = -motor_max_speed            
+                drive_motor1_speed = -motor_max_speed         
             else:
                 drive_motor1_speed = 0
         elif hubOrientation == Side.BOTTOM: # This line taken from Tcm0's 42140 code
@@ -242,11 +248,6 @@ while True:
     #if drive1.control.stalled() == True and controllerMode == 2 and controllerMode == 3:
         if stalled_counter == 50:
             stalled_counter = 0
-            drive_motor1_speed = 0
-            drive_motor2_speed = 0
-            drive1.stop()
-            drive2.stop()
-            EmStopFlash()
         else:
             stalled_counter = stalled_counter + 1
 
@@ -259,11 +260,7 @@ while True:
     #if drive1.control.stalled() == True and controllerMode == 2 and controllerMode == 3:
         if stalled_counter == 50:
             stalled_counter = 0
-            drive_motor1_speed = 0
-            drive_motor2_speed = 0
-            drive1.stop()
-            drive2.stop()
-            EmStopFlash()
+            EmergencyStop()
         else:
             stalled_counter = stalled_counter + 1
 
