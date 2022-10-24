@@ -3,15 +3,15 @@
 Pybricks software for using the PoweredUp Remote with the Technic hub. This has been written for use with my combat robot White Stripe but can be used on any model that has 2 or 4 wheel skid steering such as tanks, robots or perhaps the LEGO Technic 42140 Transformation Vehicle set.
 
 # Version 1:
-This verison has 3 different control modes, Stand-by Mode, Run Mode and Dance Mode. Stand-by Mode disables the remote's button to prevent movement of the robot when handling or not in use. Run mode which allow one to drive the robot as normal. Dance Mode spins the robot around on the spot, left button spins left, right button spins right, then press the same button to stop it spinning. 
+This verison has 3 different control modes, 1 - Stand-by Mode, 2 - Run Mode and 3 - Dance Mode. Stand-by Mode disables the remote's button to prevent movement of the robot when handling or not in use. Run mode which allow one to drive the robot as normal. Dance Mode spins the robot around on the spot, left button spins left, right button spins right, then press the same button to stop it spinning. 
 
 Switching between modes is done with the centre green button on the remote.
 
 While in Run Mode, the hub continuously checks the orientation and if it detects that the robot is up-side-down, which motor is powered and its rotation direction are both inverted so that forward on the remote remains drive forward, left remains turn left.
 
 # Version 2
-Functionally, Version 2 acts similar to Version 1 but is a more advanced version with 4 different control modes, Stand-by Mode, Run Mode (slow acceleration), Run Mode (fast acceleration) and Dance Mode.
-The version uses the .run() function to control the motors instead of .dc(). This allow for better control of the motors and ensures both motors spin at the same speed, allows for adjustable motor acceleration/deceleration and the use of the .control.stalled() function to detect when the motor is stalled, it then cuts the power to the motors to prevent any hub cutout issues mid-fight/battle.
+Functionally, Version 2 acts similar to Version 1 but is a more advanced version with 4 different control modes, 1 - Stand-by Mode, 2 - Run Mode (slow acceleration), 3 - Run Mode (fast acceleration) and 4 - Dance Mode.
+The version uses the .run() function to control the motors instead of .dc(). This allow for better control and speed regulation of the motors, adjustable motor acceleration/deceleration and the use of the .control.stalled() function to detect when the motor is stalled. Once tripped, it cuts the power to the motors to prevent the hub from cutting out mid-fight/battle. NOTE! this only activates in control mode 2, can be changed in code by editing lines 240/242 and 257/259.
 
 # Install
 
