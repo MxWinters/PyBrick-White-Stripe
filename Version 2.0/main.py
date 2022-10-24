@@ -327,7 +327,7 @@ while True:
         elif controllerMode == 3:
             controllerMode = 4
             SetLEDs()
-            print("Controller mode 1 - Dance Mode")
+            print("Controller mode 4 - Dance Mode")
         elif controllerMode == 4:
             controllerMode = 1
             SetLEDs()
