@@ -11,7 +11,7 @@ While in Run Mode, the hub continuously checks the orientation and if it detects
 
 # Version 2
 Functionally, Version 2 acts similar to Version 1 but is a more advanced version with 4 different control modes, 1 - Stand-by Mode, 2 - Run Mode (slow acceleration), 3 - Run Mode (fast acceleration) and 4 - Dance Mode.
-The version uses the .run() function to control the motors instead of .dc(). This allow for better control and speed regulation of the motors, adjustable motor acceleration/deceleration and the use of the .control.stalled() function to detect when the motor is stalled. Once the Emergency Stop has been activated, it cuts the power to the motors to prevent the hub from cutting out mid-fight/battle and the activation is delayed to prevent it kicking in the moment the motor stalls. NOTE! this only activates in control mode 2, can be changed in code by editing lines 240/242 and 257/259.
+The version uses the .run() function to control the motors instead of .dc(). This allow for better control and speed regulation of the motors, adjustable motor acceleration/deceleration and the use of the .control.stalled() function to detect when the motor is stalled. Once the Emergency Stop has been activated, it cuts the power to the motors to prevent the hub from cutting out mid-fight/battle and the activation is delayed to prevent it kicking in the moment the motor stalls. NOTE! this only activates in control mode 2, can be changed in code by editing lines 246/248 and 258/260.
 
 # Install
 
