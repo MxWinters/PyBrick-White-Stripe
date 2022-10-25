@@ -71,8 +71,6 @@ hubOrientation = hub.imu.up() # This line taken and modified from Tcm0's 42140 c
 
 # Motor Varibles
 #used by the code, no need to change these
-old_drive_motor1_speed = 0
-old_drive_motor2_speed = 0
 drive_motor1_speed = 0
 drive_motor2_speed = 0
 stalled_counter = 0
