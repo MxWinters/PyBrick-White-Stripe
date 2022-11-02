@@ -2,7 +2,7 @@
 
 Pybricks software for using the PoweredUp Remote with the Technic hub. This has been written for use with my combat robot White Stripe but can be used on any model that has 2 or 4 wheel skid steering such as tanks, robots or perhaps the LEGO Technic 42140 Transformation Vehicle set. 
 
-You can download the instructions for White Stripe Mk II on my Rebrickable page here:
+You can download the instructions for White Stripe Mk II on my Rebrickable page here:<p>
 https://rebrickable.com/mocs/MOC-126556/MxWintersAFOL/white-stripe-mk-ii-combat-robot/
 
 # Version 1:
