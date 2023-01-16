@@ -228,11 +228,11 @@ while True:
     #and mode 3 to hold motor
     elif controllerMode == 3:
         if drive_motor1_speed == 0:
-            drive1.hold()
+            drive1.stop()
         else:
             drive1.run(drive_motor1_speed)
         if drive_motor2_speed == 0:
-            drive2.hold()
+            drive2.stop()
         else:
             drive2.run(drive_motor2_speed)
 
@@ -309,8 +309,9 @@ while True:
    
     ### Mode Selector - Centre Green button
     #mode 1 - standby mode
-    #mode 2 - run/fight mode
-    #mode 3 - dance mode
+    #mode 2 - run/fight mode (slow motor acceleration)
+    #mode 3 - fight mode (fast motor acceleration)
+    #mode 4 - dance mode
     if Button.CENTER in pressed:
         if controllerMode == 1:
             controllerMode = 2
@@ -321,7 +322,7 @@ while True:
             controllerMode = 3
             SetLEDs()
             SetControlLimits()
-            print("Controller mode 3 - Run Mode (fast motor acceleration)")
+            print("Controller mode 3 - Fight Mode (fast motor acceleration)")
         elif controllerMode == 3:
             controllerMode = 4
             SetLEDs()
@@ -331,6 +332,3 @@ while True:
             SetLEDs()
             print("Controller mode 1 - Stand-By Mode")
         wait(switch_debounce_time)
-
-    # Wait For 10 Millisecond Before Repeating Loop
-    wait(10)
