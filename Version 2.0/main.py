@@ -237,7 +237,7 @@ while True:
             drive2.run(drive_motor2_speed)
 
     
-    ### Drive Motor 1 Emergency Stop
+    ### Drive Motor 1 Stall Detection 
     #executed when drive1 motor is stalled, cuts power to motor but only after stall_counter 
     #reaches 50 to prevent it randomly activating
     #un/comment the line below to enable emergency stop in control mode 2 only
@@ -246,10 +246,11 @@ while True:
     #if drive1.control.stalled() == True and controllerMode == 2 and controllerMode == 3:
         if stalled_counter == 50:
             stalled_counter = 0
+            EmergencyStop()
         else:
             stalled_counter = stalled_counter + 1
 
-    ### Drive Motor 2 Emergency Stop
+    ### Drive Motor 2 Stall Detection
     #executed when drive2 motor is stalled, cuts power to motor but only after stall_counter 
     #reaches 50 to prevent it randomly activating
     #un/comment the line below to enable emergency stop in control mode 2 only
